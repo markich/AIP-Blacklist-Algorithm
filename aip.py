@@ -80,7 +80,7 @@ class AIP:
         files_dates = {}
 
         try:
-            with open(processed_files_filepath, 'r') as records_file:
+            with open(processed_files_filepath, "r", encoding="utf-8") as records_file:
                 processed_files = records_file.read().split('\n')
         except IOError as e:
             logger.error(f"Unable to open {processed_files_filepath} file: {e}")
@@ -93,7 +93,7 @@ class AIP:
 
         try:
             for new_file in new_data_files:
-                with open(processed_files_filepath, 'a') as records_file:
+                with open(processed_files_filepath, "a", encoding="utf-8") as records_file:
                     records_file.write(new_file + '\n')
         except (IOError, ValueError) as e:
             logger.error(f"Unable to update {processed_files_filepath} file: {e}")
@@ -120,7 +120,8 @@ class AIP:
         new_ip_flows = []
         new_ips = []
         for file in new_files:
-            with open(f"{raw_data_dir_path}/{file}", 'r') as csv_file:
+            file_path = f"{raw_data_dir_path}/{file}"
+            with open(file_path, "r", encoding="utf-8") as csv_file:
                 for line in csv.reader(csv_file):
                     if line[0] != 'SrcAddr':
                         new_ip_flows.append(Flow.from_line(line))
@@ -335,7 +336,7 @@ class AIP:
         row_fieldnames = ('# Number', 'IP address', 'Rating')
 
         try:
-            with open(blocklist_filepath, 'wt', newline ='') as blocklist_file:
+            with open(blocklist_filepath, "wt", newline ='', encoding="utf-8") as blocklist_file:
                 header_writer = csv.DictWriter(blocklist_file, fieldnames=header_fieldnames)
                 header_writer.writeheader()
                 csv_writer = csv.DictWriter(blocklist_file, fieldnames=row_fieldnames)
@@ -427,7 +428,7 @@ class AIP:
         """
         chosen_functions = []
         try:
-            with open(self.functions_filepath, 'r') as csv_file:
+            with open(self.functions_filepath, "r", encoding="utf-8") as csv_file:
                 for line in csv.reader(csv_file):
                     if line:
                         chosen_functions.extend(line)
