@@ -81,8 +81,10 @@ for file in files:
 
 list_of_dictionaries = [dataset.get(key) for key in dataset.keys()]
 
-labels = {"SrcAddr", "total_events", "total_duration", "average_duration", "total_bytes", "average_bytes", "total_packets",
-          "average_packets", "first_event_time", "last_event_time"}
+labels = {"SrcAddr", "total_events", "total_duration", "average_duration",
+          "total_bytes", "average_bytes", "total_packets", "average_packets",
+          "last_event_time", "first_event_time"
+}
 
 try:
     with open(output, "w", encoding=Defaults.UTF_8.value) as f:

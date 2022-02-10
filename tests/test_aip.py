@@ -7,12 +7,17 @@ of this license document, but changing it is not allowed.
 """
 #! /usr/local/bin/python3
 
+import glob
 import os
 import pytest
 from datetime import datetime
+from logging import getLogger
 
 from aip import AIP
 from slips_aip_constants.defaults import Blocklists, Defaults, EnvVars, Functions
+
+
+logger = getLogger(__name__)
 
 
 MOCK_DATA_DIR = "/tests/mock_data/"
@@ -31,9 +36,9 @@ def get_number_of_ips(filepath):
     try:
         with open(filepath, "r", encoding="utf-8") as abs_data:
             number_of_lines = len(abs_data.readlines())
-        print(f"Number of lines in absolute data {number_of_lines}\n")
+        logger.info(f"Number of lines in absolute data {number_of_lines}\n")
     except IOError as e:
-        print(f"Unknown number of lines for {filepath}: {e}\n")
+        logger.exception(f"Unknown number of lines for {filepath}: {e}\n")
 
     return number_of_lines
 

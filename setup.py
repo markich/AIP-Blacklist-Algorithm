@@ -20,7 +20,7 @@ setup(
     packages=find_packages(exclude=("tests",)),
     version=version,
     author='Stratosphere IPS',
-    author_email='stratosphereips@agents.fel.cvut.cz',
+    author_email='stratosphere@aic.fel.cvut.cz',
     url='https://github.com/stratosphereips/AIP-Blocklist-Algorithm',
     download_url=f"https://github.com/stratosphereips/AIP-Blocklist-Algorithm/tarball/{version}",
     description='The Attacker IP Prioritizer (AIP) algorithm is a IPv4 address blocklist generator.',

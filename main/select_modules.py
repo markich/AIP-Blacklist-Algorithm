@@ -11,9 +11,10 @@ import csv
 import os
 
 from methodology import Methodology
+from slips_aip_constants.defaults import EnvVars, Functions
 
 
-FILE_FOR_FUNCTIONS = os.environ['output_folder'] + '/selected_modules.csv'
+FILE_FOR_FUNCTIONS = f"{os.environ[EnvVars.OUTPUT_FOLDER.value]}/selected_modules.csv"
 
 manual = 0
 automatic = 1
@@ -57,9 +58,9 @@ if manual == 1:
 else:
 
     list_of_functions_that_were_choosen = [
-        'prioritize_consistent_normalized_ips',
-        'prioritize_new_normalized_ips',
-        'prioritize_only_normalized_today_ips'
+        Functions.PCN.value,
+        Functions.PNN.value,
+        Functions.POTN.value
     ]
 
 with open(FILE_FOR_FUNCTIONS, "w", encoding="utf-8") as file:
